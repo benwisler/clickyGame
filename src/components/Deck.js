@@ -1,5 +1,6 @@
 import React from "react";
 
+class Deck extends React.Component {
 
   pictures = [
     {
@@ -93,6 +94,6 @@ import React from "react";
     pictures[0].used = true;
     }
 };
+}
 
-
-export default getPicture;
+export default Deck;
