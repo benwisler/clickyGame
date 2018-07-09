@@ -18,7 +18,6 @@ class Character extends React.Component {
                     id= "border"
                     src={this.props.character.image} 
                     alt="character" 
-                    className="profile-pic"
                     onClick={this.handleClick}/>
             </div>
 

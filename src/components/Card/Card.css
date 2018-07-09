@@ -1,3 +1,13 @@
-.card {
-    height: 500px;
+.container {
+    text-align: center;
+    height: 100px;
+}
+
+#jumbo {
+    padding: 0;
+    height: 200px
+}
+#body {
+    width: 80%;
+    margin: 0 auto;
 }

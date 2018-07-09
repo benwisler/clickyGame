@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Card from './components/Card/Card';
+import React, { Component } from "react";
+import Card from "./components/Card/Card";
 import CharacterBox from "./components/CharacterBox";
-import "./components/Card/Card.css"
+import "./components/Card/Card.css";
 
 const pictures = [
   {
@@ -94,7 +94,7 @@ class App extends Component {
     var currentIndex = array.length,
       temporaryValue,
       randomIndex;
-  
+
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -102,102 +102,92 @@ class App extends Component {
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-    console.log("this.shuffled")
-  
+    console.log("this.shuffled");
+
     return array;
   };
 
   checkCard = key => {
-    var card = this.state.characters.filter((e) => e.image === key);
-    for(var i=0; i<12; i++) {
+    var card = this.state.characters.filter(e => e.image === key);
+    for (var i = 0; i < 12; i++) {
       if (this.state.characters[i] === card[0] || i > 12) {
         var xi = i;
-        console.log("___"+xi)
-				break;
-			}
+        console.log("___" + xi);
+        break;
+      }
     }
-    
 
-    if ((this.state.user.score >= this.state.user.topScore) && (this.state.characters[xi].picked === false)) {
+    if (this.state.characters[xi].picked === false) {
+      if (this.state.user.score >= this.state.user.topScore) {
+        this.setState({
+          user: {
+            // ...this.state.user,
+            topScore: this.state.user.score + 1,
+            score: this.state.user.score + 1
+          }
+        });
+        this.setState({
+          characters: this.shuffle(
+            this.state.characters.map((character, current) => {
+              return current === xi
+                ? { ...character, picked: true }
+                : character;
+            })
+          )
+          // user: {
+          //   ...this.state.user,
+          //   score: this.state.user.score + 1,
+          //   // topScore: this.state.user.score +1
+
+          //
+        });
+      }
+    
+      else  {
+        this.setState({
+          user: {
+            // ...this.state.user,
+            topScore: this.state.user.topScore,
+            score: this.state.user.score + 1
+          }
+        });
+        this.setState({
+          characters: this.shuffle(
+            this.state.characters.map((character, current) => {
+              return current === xi
+                ? { ...character, picked: true }
+                : character;
+            })
+          )
+        })
+  }      
+} 
+else {
+      this.setState({
+        user: {
+          ...this.state.user,
+          topScore: this.state.user.topScore,
+          score: 0
+        }
+      });
       this.setState({
         characters: this.shuffle(
-          this.state.characters.map((character, current) => {
-            return current === xi
-              ? { ...character, picked: true }
-              : character;
+          this.state.characters.map(character => {
+            return { ...character, picked: false };
           })
-        ),
-        user: {
-          ...this.state.user,
-          score: this.state.user.score + 1,
-          topScore: this.state.user.score +1
-        }
+        )
       });
-    } else if (this.state.characters[xi].picked === false) {
-      this.setState({
-        user: {
-          ...this.state.user,
-          score: this.state.user.score
-        }
-      });
-    }
-  
-
-    else {
-      this.setState({
-        user: {
-        ...this.state.user,
-        score: 0
-        }
-      })
-      this.setState({        characters: this.shuffle(this.state.characters.map(character => {
-        return { ...character, picked: false}
-      }))
-    })
-    console.log(this.state)
-
-
-				
-      // this.setState({
-      //   characters: this.shuffle(
-      //     pictures.map(character => {
-      //       return { ...character, picked: false };
-      //     })
-      //   ),
-      //   user: {
-      //     ...this.state.user,
-      //     score: 0,
-      //     // topScore: this.state.user.topScore
-      //   }
-      // });
-
-
-      // this.setState({ characters: characters});
-      // const this.shuffle = require('knuth-this.shuffle').knuththis.shuffle;
-      // this.setState({ characters: this.shuffle(this.state.characters)});
-
-      // this.setState({
-      //   characters: this.shuffle(
-      //     this.state.characters.map(character => {
-      //       return { ...character, picked: false };
-      //     })
-      //   ),
-      //   user: {
-      //     ...this.state.user,
-      //     score: 0,
-      //     topScore: this.state.user.topScore
-      //   }
-      // });
+      console.log(this.state);
 
     }
     console.log(this.state.user.score);
     console.log("!!" + this.state.user.topScore);
+  
   };
   render() {
     return (
-
-      <div>
-        <Card 
+      <div id="body">
+        <Card
           checkCard={this.checkCard}
           shuffle={this.shuffle}
           user={this.state.user}

@@ -2,7 +2,7 @@ import React from "react";
 import "./Character/Character.css";
 import Character from "./Character/Character";
 import { Grid, Row, Col } from 'react-bootstrap';
-const CharacterBox = props => (
+var CharacterBox = props => (
     <Grid>
     <Row className="show-grid">
       <Col xs={6} md={4}>
