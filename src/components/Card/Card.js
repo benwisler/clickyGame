@@ -1,11 +1,12 @@
 import React from "react";
-import CharacterBox from "./../CharacterBox";
+import CharacterGrid from "../CharacterGrid";
 import "./Card.css";
 
 class Card extends React.Component {
   render() {
     return (
       <div>
+        <div>
         <div id="jumbo" className="jumbotron jumbotron-fluid">
           <div className="container">
           <h1 className="display-4">Clicky Game!</h1>
@@ -13,8 +14,9 @@ class Card extends React.Component {
             <p className="lead">Top Score: {this.props.user.topScore}</p>
           </div>
         </div>
-
-        <CharacterBox
+        </div>
+      
+        <CharacterGrid
           characters={this.props.characters}
           checkCard={this.props.checkCard}
         />
