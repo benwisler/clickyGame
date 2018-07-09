@@ -1,0 +1,23 @@
+img {
+    height: 300px;
+    width: 300px;
+    /* margin: 15px 30px 10px 15px; */
+    display: flex;
+    flex-direction: column;
+    display: block;
+
+
+}
+
+
+#border {
+    border: 4px double blue;
+    margin: 15px;
+
+
+}
+/* #grid {
+    display: flex;
+    flex-wrap: wrap;
+
+} */
