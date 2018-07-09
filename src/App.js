@@ -6,7 +6,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="Card">
+      <div className="App">
         <Card />
       </div>
     );

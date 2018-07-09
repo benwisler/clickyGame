@@ -2,7 +2,10 @@ import React from 'react';
 
 class Character extends React.Component {
 
-    handleClick = () => {
+    handleClick = (e) => {
+        // this.checkCard;
+        e.preventDefault();
+        alert("clicked")
         this.props.checkCard(this.props.index);
     }
 
@@ -10,12 +13,13 @@ class Character extends React.Component {
     { 
         return(
 
-            <div className="character">
+            <div>
                 <img 
+                    
                     src={this.props.character.image} 
                     alt="character" 
                     className="profile-pic"
-                    onClick={this.checkCard}/>
+                    onClick={this.handleClick}/>
             </div>
 
     )

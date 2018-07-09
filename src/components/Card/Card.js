@@ -1,8 +1,5 @@
 import React from "react";
-import CharacterBox from "../CharacterBox"
-  var points = 0;
-  var score = 0;
-  var topScore = 0;
+import CharacterBox from "./../CharacterBox"
   const pictures = [
     {
       name: 1,
@@ -79,15 +76,10 @@ import CharacterBox from "../CharacterBox"
   const shuffle = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
   
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-  
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
+        randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-  
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
+        temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
@@ -101,13 +93,16 @@ class Card extends React.Component {
 
     this.state = {
       user: {
-        score: 0
+        score: 1,
+        topScore:1
       },
       characters: shuffle(pictures)
     };
 }
    checkCard = (index) => {
+     
      console.log("clicked")
+
     if (this.state.characters[index].picked === false) {
       this.setState({
         characters: shuffle( this.state.characters.map( (character, current) =>  {
@@ -115,19 +110,33 @@ class Card extends React.Component {
         })),
         user: {
           ...this.state.user,
-          score: this.state.user.score + 1
+          score: this.state.user.score+1,
       }
+      
   });
-} else {
+
+if (this.state.user.score >= this.state.user.topScore) {
+  this.setState({
+    user: {
+      ...this.state.user,
+      topScore: this.state.user.score
+
+    }
+  })
+
+}
+    }
+else {
   this.setState({
       characters: shuffle(this.state.characters.map( character => { return { ...character, picked : false } })),
       user: {
           ...this.state.user,
-          score: 0
+          score: 1,
+          
       }
   });
-  //and shuffle
 }
+console.log(this.state.user.topScore)
 
 }
 
