@@ -13,7 +13,7 @@ class Character extends React.Component {
     { 
         return(
 
-            <div>
+            <div >
                 <img 
                     id= "border"
                     src={this.props.character.image} 

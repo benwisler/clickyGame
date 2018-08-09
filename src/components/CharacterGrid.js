@@ -2,6 +2,7 @@ import React from "react";
 import "./Character/Character.css";
 import Character from "./Character/Character";
 import { Grid, Row, Col } from 'react-bootstrap';
+
 var CharacterGrid = props => (
   <div id="shrinkit">
     <Grid>

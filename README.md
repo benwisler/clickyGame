@@ -13,3 +13,5 @@
 * Click the images as they appear.
 * Click different images to earn points.
 * Score 12 points to win!
+
+

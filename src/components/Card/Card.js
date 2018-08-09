@@ -7,15 +7,15 @@ class Card extends React.Component {
     return (
       <div>
         <div>
-        <div id="jumbo" className="jumbotron jumbotron-fluid">
-          <div className="container">
-          <h1 className="display-4">Clicky Game!</h1>
-            <h2 className="display-4">Score: {this.props.user.score}</h2>
-            <p className="lead">Top Score: {this.props.user.topScore}</p>
+          <div id="jumbo" className="jumbotron jumbotron-fluid">
+            <div className="container">
+              <h1 className="display-4">Clicky Game!</h1>
+              <h2 className="display-4">Score: {this.props.user.score}</h2>
+              <p className="lead">Top Score: {this.props.user.topScore}</p>
+            </div>
           </div>
         </div>
-        </div>
-      
+
         <CharacterGrid
           characters={this.props.characters}
           checkCard={this.props.checkCard}
